@@ -1,0 +1,22 @@
+from langchain_community.embeddings import HuggingFaceEmbeddings
+
+
+_embedding_model = None
+
+
+def get_embedding_model():
+    """
+    Create the embedding model only once.
+    """
+    global _embedding_model
+
+    if _embedding_model is None:
+
+        _embedding_model = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    return _embedding_model
+
+
+
